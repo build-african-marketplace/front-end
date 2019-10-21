@@ -1,16 +1,13 @@
-import { GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE } from '../actions/actions';
+import { GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE } from '../actions';
 
 const initialState = {
     items: [],
-    item: {},
     fetchingItems: false,
     error: null
 }
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
-
-        //get all items
         case GET_ITEMS:
             return {
                 ...state,
@@ -20,7 +17,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingItems: false,
-                items: action.payload
+                ITEMS: action.payload
             }
         case GET_ITEMS_FAILURE:
             return {
@@ -29,6 +26,6 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload
             }
         default:
-            return state
+            return state;
     }
 }

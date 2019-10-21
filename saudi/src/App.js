@@ -1,20 +1,23 @@
 import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Switch, Redirect } from "react-router-dom";
 
 import './App.css';
-import Login from './components/Home/Login';
 import SellerPage from './components/Seller/SellerPage';
 import PrivateRoute from "./components/PrivateRoute";
+import HomePage from './components/HomePage';
 
 function App() {
   return (
-    <div className="App">
-      <Switch>
-        <Route exact path="/" component={Login} />
-        <PrivateRoute path="/seller-page" component={SellerPage} />
-        <Redirect from="/" to="/seller-page" />
-      </Switch>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <PrivateRoute path="/seller-page" component={SellerPage} />
+          <Redirect from="/" to="/seller-page" />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
