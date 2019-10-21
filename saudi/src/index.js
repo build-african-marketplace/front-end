@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from "react-router-dom";
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
@@ -12,17 +11,16 @@ import * as serviceWorker from './serviceWorker';
 //import { reducer } from './reducer';
 
 //devtools for redux
-//const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-// store holds state
-//const store = createStore(reducer, composeEnhancers(applyMiddleware(thunk, logger)));
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+//store holds state
+// const store = createStore(
+//     reducer,
+//     composeEnhancers(applyMiddleware(thunk))
+// );
 
 const rootElement = document.getElementById('root');
 ReactDOM.render(
-    //<Provider store={store}>
-        <Router>
-            <App />
-        </Router>,
-    //</Provider>,
+        <App />,
     rootElement
 );
 

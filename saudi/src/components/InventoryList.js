@@ -7,7 +7,7 @@ import React from 'react';
     render() {
         return(
             <div className="inventory-list">
-
+                <h3>Items List</h3>
             </div>
         )
     }
