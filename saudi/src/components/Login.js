@@ -1,13 +1,15 @@
 import React from "react";
-import axios from 'axios';
+import { connect } from "react-redux";
+import { login } from "../actions";
 
 class Login extends React.Component {
+
     state = {
         credentials: {
             email: "",
             password: ""
         }
-    };
+    }
 
     handleChange = e => {
         this.setState({
@@ -18,25 +20,10 @@ class Login extends React.Component {
         });
     };
 
-    login = e => {
-        e.preventDefault();
-
-        axios
-            .post(`https://african-marketplace-bw.herokuapp.com/api/auth/login`, this.state.credentials)
-            .then(res => {
-                console.log(res);
-                localStorage.setItem("token", res.data.token);
-                localStorage.setItem("user_id", res.data.user_id);
-                // redirect to the apps main page?
-                this.props.history.push("/events-home");
-            })
-            .catch(err => console.log(err));
-    };
-
     render() {
         return (
             <div className="login-page">
-                <form onSubmit={this.login}>
+                <form onSubmit={() => this.props.login(this.state.credentials)}>
                     <label>Email: </label>
                     <input
                         type="text"
@@ -63,4 +50,7 @@ class Login extends React.Component {
     }
 }
 
-export default Login;
+export default connect(
+    null,
+    { login }
+)(Login);

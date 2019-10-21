@@ -1,4 +1,4 @@
-import { GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE } from '../actions';
+import { GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, LOGIN } from '../actions';
 
 const initialState = {
     items: [],
@@ -8,6 +8,11 @@ const initialState = {
 
 export const reducer = (state = initialState, action) => {
     switch (action.type) {
+        case LOGIN: 
+            return {
+                ...state,
+                credentials: action.payload
+            }
         case GET_ITEMS:
             return {
                 ...state,
@@ -17,7 +22,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingItems: false,
-                ITEMS: action.payload
+                items: action.payload
             }
         case GET_ITEMS_FAILURE:
             return {
