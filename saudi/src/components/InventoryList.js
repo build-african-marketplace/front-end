@@ -4,6 +4,11 @@ import { getItems } from "../actions";
 
 
 class InventoryList extends React.Component {
+
+    componentDidMount(){
+        this.props.getItems();
+    }
+
     render() {
         return(
             <div className="inventory-list">
