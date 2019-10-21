@@ -1,9 +1,9 @@
 import React from 'react';
-//import axios from 'axios';
+import { connect } from "react-redux";
+import { getItems } from "../actions";
 
 
-
- export class InventoryList extends React.Component {
+class InventoryList extends React.Component {
     render() {
         return(
             <div className="inventory-list">
@@ -12,3 +12,12 @@ import React from 'react';
         )
     }
 }
+
+const mapStateToProps = (state) => ({
+    items: state.items
+})
+
+export default connect(
+    mapStateToProps,
+    { getItems }
+)(InventoryList);
