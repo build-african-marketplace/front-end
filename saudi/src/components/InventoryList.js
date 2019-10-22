@@ -7,9 +7,9 @@ class InventoryList extends React.Component {
     constructor() {
         super();
         this.state = {
-            search: ''
+            search: '',
+            selectCountry: ''
         };
-
     }
 
     componentDidMount(){
@@ -18,6 +18,10 @@ class InventoryList extends React.Component {
     
     updateSearch(event) {
         this.setState({search: event.target.value})
+    }
+
+    updateFilter(event){
+        this.setState({selectCountry: event.target.value})
     }
 
     render() {
@@ -36,7 +40,9 @@ class InventoryList extends React.Component {
                     onChange={(e) => this.updateSearch(e)}   
                 />
             </div>
-
+            <div>
+               
+            </div>
             <div className="inventory-list">
                 {filteredItems.map(item => {
                     return(
