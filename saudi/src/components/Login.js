@@ -20,11 +20,16 @@ class Login extends React.Component {
         });
     };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.login(this.state.credentials);
+    }
+
     render() {
         return (
             <div className="login">
                 <h2>Log In</h2>
-                <form onSubmit={() => this.props.login(this.state.credentials)}>
+                <form onSubmit={this.handleSubmit}>
                         <input
                             className="login-input"
                             type="text"

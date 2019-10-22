@@ -11,7 +11,7 @@ export const login = (credentials) => dispatch => {
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user_id", res.data.user_id);
+            localStorage.setItem("user_id", res.data.user.id);
             // redirect to seller home page
             this.props.history.push("/seller-page");
         })
