@@ -48,8 +48,8 @@ export const getItemsUserId = () => dispatch => {
     axiosWithAuth()
         .get(`/users/${id}`)
         .then(res => {
-            console.log(res.data);
-            dispatch({ type: GET_ITEMS_USERID_SUCCESS, payload: res.data });
+            console.log(res.data.user.items);
+            dispatch({ type: GET_ITEMS_USERID_SUCCESS, payload: res.data.user.items });
         })
         .catch(err => {
             console.error(err);
