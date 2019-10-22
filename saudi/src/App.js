@@ -6,11 +6,13 @@ import './App.css';
 import SellerPage from './components/Seller/SellerPage';
 import PrivateRoute from "./components/PrivateRoute";
 import HomePage from './components/HomePage';
+import NavBar from './components/Navbar'
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <NavBar/>
         <Switch>
           <Route path="/" component={HomePage} />
           <PrivateRoute path="/seller-page" component={SellerPage} />

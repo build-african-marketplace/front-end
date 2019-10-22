@@ -1,5 +1,33 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import styled from 'styled-components';
+
+const navContainer= styled.div`
+display:flex;
+padding:20px;
+`
+
+const navLinksContainer= styled.div`
+display:flex;
+`
+
+const navLinks= styled(Link)`
+font-family: 'Open Sans', sans-serif;
+font-size:35px;
+margin:20px;
+&:hover{
+    text-decoration:underline
+}
+`
+
+const signOutA= styled.a`
+font-family: 'Open Sans', sans-serif;
+font-size:35px;
+margin:20px;
+&:hover{
+    text-decoration:underline
+}
+`
 
 function signOut(){
     localStorage.clear()
@@ -10,28 +38,28 @@ const NavBar= ({user})=>{
     let navLinks;
     if (user.userId){
         navLinks=(
-            <div>
-                <Link to={`/${user.username}`}>
+            <navLinksContainer>
+                <navLinks to={`/${user.username}`}>
                     My Profile
-                </Link>
-                <Link to='myStore'>
+                </navLinks>
+                <navLinks to='myStore'>
                     My Store
-                </Link>
-            </div>
+                </navLinks>
+            </navLinksContainer>
         )
     }else{
         navLinks=(
-            <div>
-                <Link to='/logIn'>
+            <navLinksContainer>
+                <navLinks to='/logIn'>
                     Log In
-                </Link>
-                <Link to='/signUp'>
+                </navLinks>
+                <navLinks to='/signUp'>
                     Sign Up
-                </Link>
-                <a onClick={()=> signOut()}>
+                </navLinks>
+                <signOutA onClick={()=> signOut()}>
                     Sign Out
-                </a>
-            </div>
+                </signOutA>
+            </navLinksContainer>
         )
     }
         return(
