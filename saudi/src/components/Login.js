@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
+import { withRouter } from "react-router-dom"
 
 class Login extends React.Component {
 
@@ -20,11 +21,18 @@ class Login extends React.Component {
         });
     };
 
+    handleSubmit = e => {
+        e.preventDefault();
+        this.props.login(this.state.credentials).then(() => {
+            this.props.history.push("/seller-page")
+        })
+    }
+
     render() {
         return (
             <div className="login">
                 <h2>Log In</h2>
-                <form onSubmit={() => this.props.login(this.state.credentials)}>
+                <form onSubmit={this.handleSubmit}>
                         <input
                             className="login-input"
                             type="text"
@@ -51,7 +59,7 @@ class Login extends React.Component {
     }
 }
 
-export default connect(
+export default withRouter(connect(
     null,
     { login }
-)(Login);
+)(Login));

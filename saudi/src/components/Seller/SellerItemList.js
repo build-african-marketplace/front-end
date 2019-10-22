@@ -6,7 +6,7 @@ import { getItemsUserId } from "../../actions";
 class SellerItemList extends React.Component {
 
     componentDidMount() {
-        this.props.getItems();
+        this.props.getItemsUserId();
     }
 
     render() {

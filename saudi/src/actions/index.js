@@ -11,7 +11,7 @@ export const login = (credentials) => dispatch => {
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user_id", res.data.user_id);
+            localStorage.setItem("user_id", res.data.user.id);
             // redirect to seller home page
             this.props.history.push("/seller-page");
         })
@@ -43,9 +43,10 @@ export const GET_ITEMS_USERID_FAILURE = 'GET_ITEMS_USERID_FAILURE';
 
 export const getItemsUserId = () => dispatch => {
     dispatch({ type: GET_ITEMS_USERID });
+    const id = localStorage.getItem("user_id");
 
     axiosWithAuth()
-        .get('/users/:id')
+        .get(`/users/${id}`)
         .then(res => {
             console.log(res.data);
             dispatch({ type: GET_ITEMS_USERID_SUCCESS, payload: res.data });
