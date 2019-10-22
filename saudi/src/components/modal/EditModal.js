@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap'
 
-function Example() {
+function EditModal() {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -31,4 +31,4 @@ function Example() {
     );
   }
   
-export default Example;
+export default EditModal;
