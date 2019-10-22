@@ -12,7 +12,15 @@ class InventoryList extends React.Component {
     render() {
         return(
             <div className="inventory-list">
-                <h3>Items List</h3>
+                {this.props.items.map(item => {
+                    return(
+                        <div className="item-card">
+                            <img className="item-photo" src={item.photo_url} alt="item" />
+                            <h3>{item.name}<span>{item.price}</span></h3>
+                            <p>{item.description}</p>
+                        </div>
+                    )
+                })}
             </div>
         )
     }
