@@ -1,4 +1,5 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
+// import keyMirror from 'keyMirror';
 
 export const LOGIN = 'LOGIN';
 
@@ -54,3 +55,8 @@ export const getItemsUserId = () => dispatch => {
             dispatch({ type: GET_ITEMS_USERID_FAILURE, payload: err });
         })
 }
+
+// export const ModalActionTypes = keyMirror({
+//     HIDE_MODAL: null,
+//     SHOW_MODAL: null,
+// })
