@@ -11,8 +11,8 @@ export const login = (credentials) => dispatch => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("user_id", res.data.user_id);
-            // redirect to the apps main page?
-            this.props.history.push("/events-home");
+            // redirect to seller home page
+            this.props.history.push("/seller-page");
         })
         .catch(err => console.log(err));
 };
@@ -33,5 +33,24 @@ export const getItems = () => dispatch => {
         .catch(err => {
             console.error(err);
             dispatch({ type: GET_ITEMS_FAILURE, payload: err });
+        })
+}
+
+export const GET_ITEMS_USERID = 'GET_ITEMS_USERID';
+export const GET_ITEMS_USERID_SUCCESS = 'GET_ITEMS_USERID_SUCCESS';
+export const GET_ITEMS_USERID_FAILURE = 'GET_ITEMS_USERID_FAILURE';
+
+export const getItemsUserId = () => dispatch => {
+    dispatch({ type: GET_ITEMS_USERID });
+
+    axiosWithAuth()
+        .get('/users/:id')
+        .then(res => {
+            console.log(res.data);
+            dispatch({ type: GET_ITEMS_USERID_SUCCESS, payload: res.data });
+        })
+        .catch(err => {
+            console.error(err);
+            dispatch({ type: GET_ITEMS_USERID_FAILURE, payload: err });
         })
 }
