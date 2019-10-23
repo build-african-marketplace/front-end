@@ -1,4 +1,4 @@
-import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE } from '../actions';
+import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE, GET_ITEM_ID, GET_ITEM_ID_SUCCESS, GET_ITEM_ID_FAILURE } from '../actions';
 
 const initialState = {
     items: [],
@@ -42,6 +42,23 @@ export const reducer = (state = initialState, action) => {
                 items: action.payload
             }
         case GET_ITEMS_USERID_FAILURE:
+            return {
+                ...state,
+                fetchingItems: false,
+                error: action.payload
+            }
+        case GET_ITEM_ID:
+            return {
+                ...state,
+                fetchingItems: true
+            }
+        case GET_ITEM_ID_SUCCESS:
+            return {
+                ...state,
+                fetchingItems: false,
+                items: action.payload
+            }
+        case GET_ITEM_ID_FAILURE:
             return {
                 ...state,
                 fetchingItems: false,
