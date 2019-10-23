@@ -1,8 +1,9 @@
-import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE } from '../actions';
+import { LOGIN, LOGIN_SUCCESS, LOGIN_FAILURE, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE } from '../actions';
 
 const initialState = {
     items: [],
     fetchingItems: false,
+    loggedIn: false,
     error: null
 }
 

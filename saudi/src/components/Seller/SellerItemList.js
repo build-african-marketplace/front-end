@@ -11,16 +11,19 @@ class SellerItemList extends React.Component {
         this.props.getItemsUserId();
     }
 
+    
+
     render() {
         return (
             <div className="seller-item-list">
-                {this.props.items.map(item => {
+                {this.props.items.map((item, key) => {
                     return (
-                        <div className="item-card">
+                        <div key={key} className="item-card">
                             <img className="item-photo" src={item.photo_url} alt="item" />
                             <h3>{item.name}<span>{item.price}</span></h3>
+                            <h4>{item.zip_code}</h4>
                             <p>{item.description}</p>
-                            <EditModal />
+                            <EditModal item={item}/>
                         </div>
                     )
                 })}

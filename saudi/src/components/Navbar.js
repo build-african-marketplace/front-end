@@ -35,11 +35,12 @@ function signOut(){
 }
 
 const NavBar= ({user})=>{
+    console.log('user',user)
     let navLinks;
-    if (user.userId){
+    if (user.user_id){
         navLinks=(
             <navLinksContainer>
-                <navLinks to={`/${user.username}`}>
+                <navLinks to={`/${user.user_id}`}>
                     My Profile
                 </navLinks>
                 <navLinks to='myStore'>

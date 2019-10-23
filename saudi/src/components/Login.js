@@ -2,6 +2,18 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
 import { withRouter } from "react-router-dom"
+import styled from 'styled-components';
+import HomeSplash from '../images/HomeSplash.jpg'
+
+
+const HomeContainer = styled.div`
+    background-image: url(${HomeSplash});
+    background-size: 100%;
+  width: auto;
+  height: 100%;
+  
+`;
+
 
 class Login extends React.Component {
 
@@ -31,6 +43,7 @@ class Login extends React.Component {
     render() {
         return (
             <div className="login">
+                <HomeContainer>
                 <h2>Log In</h2>
                 <form onSubmit={this.handleSubmit}>
                         <input
@@ -53,7 +66,7 @@ class Login extends React.Component {
                     <br />
                     <button className="login-btn">Log in</button>
                 </form>
-
+                </HomeContainer>
             </div>
         );
     }
