@@ -69,6 +69,6 @@ const signupFormTemplate = ({ values, errors, touched, status, history, handleUs
         })
         .catch(error => console.log('Error'));
     },
-  })(loginFormTemplate);
+  })(signupFormTemplate);
   export default signupForm;
   
