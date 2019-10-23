@@ -15,6 +15,16 @@ const HomeContainer = styled.div`
 `;
 
 
+import HomeSplash from '../images/HomeSplash.jpg'
+import styled from 'styled-components'
+
+const LoginContainer = styled.div`
+   background-image: url(${HomeSplash});
+   background-size: 100%;
+   width: auto;
+   height: 100%;
+`;
+
 class Login extends React.Component {
 
     state = {
@@ -43,30 +53,30 @@ class Login extends React.Component {
     render() {
         return (
             <div className="login">
-                <HomeContainer>
-                <h2>Log In</h2>
-                <form onSubmit={this.handleSubmit}>
-                        <input
-                            className="login-input"
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                            value={this.state.credentials.email}
-                            onChange={this.handleChange}
-                        />
-                    <br />
-                        <input
-                            className="login-input"
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            value={this.state.credentials.password}
-                            onChange={this.handleChange}
-                        />
-                    <br />
-                    <button className="login-btn">Log in</button>
-                </form>
-                </HomeContainer>
+                <LoginContainer>
+                  <h2>Log In</h2>
+                  <form onSubmit={this.handleSubmit}>
+                          <input
+                              className="login-input"
+                              type="text"
+                              name="email"
+                              placeholder="Email"
+                              value={this.state.credentials.email}
+                              onChange={this.handleChange}
+                          />
+                      <br />
+                          <input
+                              className="login-input"
+                              type="password"
+                              name="password"
+                              placeholder="Password"
+                              value={this.state.credentials.password}
+                              onChange={this.handleChange}
+                          />
+                      <br />
+                      <button className="login-btn">Log in</button>
+                  </form>
+                </LoginContainer>
             </div>
         );
     }

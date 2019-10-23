@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
+import { withRouter, Link } from "react-router-dom"
 import { getItemsUserId } from "../../actions";
 import EditModal from '../modal/EditModal';
 
@@ -36,7 +37,7 @@ const mapStateToProps = (state) => ({
     items: state.items
 })
 
-export default connect(
+export default withRouter(connect(
     mapStateToProps,
     { getItemsUserId }
-)(SellerItemList);
+)(SellerItemList));

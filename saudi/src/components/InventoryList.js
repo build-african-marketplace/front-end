@@ -46,7 +46,7 @@ class InventoryList extends React.Component {
             <div className="inventory-list">
                 {filteredItems.map(item => {
                     return(
-                        <div className="item-card">
+                        <div className="item-list-card">
                             <img className="item-photo" src={item.photo_url} alt="item" />
                             <h3>{item.name}<span>{item.price}</span></h3>
                             <p>{item.description}</p>
