@@ -2,16 +2,16 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-const navContainer= styled.div`
+const NavContainer= styled.div`
 display:flex;
 padding:20px;
 `
 
-const navLinksContainer= styled.div`
+const NavLinksContainer= styled.div`
 display:flex;
 `
 
-const navLinks= styled(Link)`
+const NavLinks= styled(Link)`
 font-family: 'Open Sans', sans-serif;
 font-size:35px;
 margin:20px;
@@ -20,7 +20,7 @@ margin:20px;
 }
 `
 
-const signOutA= styled.a`
+const SignOutA= styled.a`
 font-family: 'Open Sans', sans-serif;
 font-size:35px;
 margin:20px;
@@ -38,28 +38,28 @@ const NavBar= ({user})=>{
     let navLinks;
     if (user.userId){
         navLinks=(
-            <navLinksContainer>
-                <navLinks to={`/${user.username}`}>
+            <NavLinksContainer>
+                <NavLinks to={`/${user.username}`}>
                     My Profile
-                </navLinks>
-                <navLinks to='myStore'>
+                </NavLinks>
+                <NavLinks to='myStore'>
                     My Store
-                </navLinks>
-            </navLinksContainer>
+                </NavLinks>
+                <SignOutA onClick={()=> signOut()}>
+                    Sign Out
+                </SignOutA>
+            </NavLinksContainer>
         )
     }else{
         navLinks=(
-            <navLinksContainer>
-                <navLinks to='/logIn'>
+            <NavLinksContainer>
+                <NavLinks to='/logIn'>
                     Log In
-                </navLinks>
-                <navLinks to='/signUp'>
+                </NavLinks>
+                <NavLinks to='/signUp'>
                     Sign Up
-                </navLinks>
-                <signOutA onClick={()=> signOut()}>
-                    Sign Out
-                </signOutA>
-            </navLinksContainer>
+                </NavLinks>
+            </NavLinksContainer>
         )
     }
         return(
