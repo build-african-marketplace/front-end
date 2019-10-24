@@ -20,6 +20,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 credentials: action.payload
             }
+        //get items
         case GET_ITEMS:
             return {
                 ...state,
@@ -37,6 +38,7 @@ export const reducer = (state = initialState, action) => {
                 fetchingItems: false,
                 error: action.payload
             }
+        //get items by user id
         case GET_ITEMS_USERID:
             return {
                 ...state,
@@ -54,6 +56,7 @@ export const reducer = (state = initialState, action) => {
                 fetchingItems: false,
                 error: action.payload
             }
+        //get item by id
         case GET_ITEM_ID:
             return {
                 ...state,
