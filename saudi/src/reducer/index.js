@@ -9,6 +9,7 @@ const initialState = {
     items: [],
     item: {},
     fetchingItems: false,
+    fetchedItems: false,
     loggedIn: false,
     error: null
 }
@@ -24,18 +25,21 @@ export const reducer = (state = initialState, action) => {
         case GET_ITEMS:
             return {
                 ...state,
-                fetchingItems: true
+                fetchingItems: true,
+                fetchedItems: false
             }
         case GET_ITEMS_SUCCESS:
             return {
                 ...state,
                 fetchingItems: false,
+                fetchedItems: true,
                 items: action.payload
             }
         case GET_ITEMS_FAILURE:
             return {
                 ...state,
                 fetchingItems: false,
+                fetchedItems: false,
                 error: action.payload
             }
         //get items by user id
@@ -60,7 +64,7 @@ export const reducer = (state = initialState, action) => {
         case GET_ITEM_ID:
             return {
                 ...state,
-                fetchingItems: true
+                fetchingItems: true,
             }
         case GET_ITEM_ID_SUCCESS:
             return {

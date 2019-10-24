@@ -3,8 +3,9 @@ import { connect } from "react-redux";
 import { getItemById } from "../actions";
 
 
-class ItemCard extends React.Component {
 
+class ItemCard extends React.Component {
+    
     componentDidMount() {
         this.props.getItemById(this.props.match.params.id);
     }
