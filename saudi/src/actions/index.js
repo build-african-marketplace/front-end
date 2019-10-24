@@ -66,7 +66,7 @@ export const getItemById = (id) => dispatch => {
     axiosWithAuth()
         .get(`/items/${id}`)
         .then(res => {
-            console.log("getItemById-actions", res.data);
+            console.log(res.data);
             dispatch({ type: GET_ITEM_ID_SUCCESS, payload: res.data.item });
         })
         .catch(err => {
@@ -75,19 +75,21 @@ export const getItemById = (id) => dispatch => {
         })
 }
 
-export const POST_NEW_ITEM = "POST_NEW_ITEM";
-export const POST_NEW_ITEM_SUCCESS = "POST_NEW_ITEM_SUCCESS";
-export const POST_NEW_ITEM_FAILURE = "POST_NEW_ITEM_FAILURE";
+export const ADD_ITEM = 'ADD_ITEM';
+export const ADD_ITEM_SUCCESS = 'ADD_ITEM_SUCCESS';
+export const ADD_ITEM_FAILURE = 'ADD_ITEM_FAILURE';
 
-export const postNewItem = () => dispatch => {
-    dispatch({ type: POST_NEW_ITEM });
+export const addItem = item => dispatch => {
+    dispatch({ type: ADD_ITEM });
 
     axiosWithAuth()
-    .post('/items')
-    .then(res => {
-        console.log("POSTING NEW ITEM_a", res.data)
-        dispatch({ type: POST_NEW_ITEM_SUCCESS})
-        
-    })
+        .post(`/items`, item)
+        .then(res => {
+            dispatch({ type: ADD_ITEM_SUCCESS, payload: res.data });
+        })
+        .catch(err => {
+            console.error(err);
+            dispatch({ type: ADD_ITEM_FAILURE, payload: err });
+        })
 }
 

@@ -1,39 +1,34 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { getItemById } from "../actions/index";
-// import EditModal from './modal/EditModal';
+import { getItemById } from "../actions";
 
 
 
 class ItemCard extends React.Component {
     
     componentDidMount() {
-        console.log('DidMount-log_byId', this.props)
-        this.props.getItemById();
+        this.props.getItemById(this.props.match.params.id);
     }
 
     render() {
-        console.log('ItemCard-render props', this.props);
+        console.log('id', this.props.match.params.id);
+        console.log('props', this.props.item);
+        const item = this.props.item;
         return (
-            <div className="seller-item-list">
-                {/* {this.props.items.map((item, key) => {
-                    return (
-                            <div className="item-list-card" key={key}>
-                                <img className="item-photo" src={item.photo_url} alt="item" />
-                                <h3>{item.name}<span>{item.price}</span></h3>
-                                <h4>{item.city}</h4>
-                                <p>{item.description}</p>
-                                <EditModal item={item} />
-                            </div>
-                    )
-                })} */}
+            <div className="item-list-card">
+                <h1>{item.name}</h1>
+                <img className="item-photo" src={item.photo_url} alt="item" />
+                <p>Price: {item.price}</p>
+                <p>City: {item.city}</p>
+                <p>Country: {item.country}</p>
+                <p>Description: {item.description}</p>
             </div>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    items: state.items
+    item: state.item
 })
 
 export default connect(

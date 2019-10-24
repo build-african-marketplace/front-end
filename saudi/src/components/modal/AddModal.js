@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap'
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from 'react-redux';
-import { postNewItem } from '../../actions/index'
+import { addItem } from '../../actions/index'
 
 
-function AddModal({item, postNewItem}) {
+function AddModal({item, addItem}) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -31,7 +31,7 @@ function AddModal({item, postNewItem}) {
             .then(res => {
                 console.log('POST response',res.data)
                 handleClose()
-                postNewItem()
+                addItem()
             })
         
           .catch(err => console.log(err.response));
@@ -84,5 +84,5 @@ function AddModal({item, postNewItem}) {
 
 export default (connect(
     null,
-    { postNewItem }
+    { addItem }
 )(AddModal));
