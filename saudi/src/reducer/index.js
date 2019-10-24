@@ -2,7 +2,9 @@ import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERI
 
 const initialState = {
     items: [],
+    item: {},
     fetchingItems: false,
+    fetchedItems: false,
     loggedIn: false,
     error: null
 }
@@ -17,18 +19,21 @@ export const reducer = (state = initialState, action) => {
         case GET_ITEMS:
             return {
                 ...state,
-                fetchingItems: true
+                fetchingItems: true,
+                fetchedItems: false
             }
         case GET_ITEMS_SUCCESS:
             return {
                 ...state,
                 fetchingItems: false,
+                fetchedItems: true,
                 items: action.payload
             }
         case GET_ITEMS_FAILURE:
             return {
                 ...state,
                 fetchingItems: false,
+                fetchedItems: false,
                 error: action.payload
             }
         case GET_ITEMS_USERID:
@@ -51,13 +56,13 @@ export const reducer = (state = initialState, action) => {
         case GET_ITEM_ID:
             return {
                 ...state,
-                fetchingItems: true
+                fetchingItems: true,
             }
         case GET_ITEM_ID_SUCCESS:
             return {
                 ...state,
                 fetchingItems: false,
-                items: action.payload
+                item: action.payload
             }
         case GET_ITEM_ID_FAILURE:
             return {

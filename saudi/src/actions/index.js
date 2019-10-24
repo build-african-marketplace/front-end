@@ -1,5 +1,4 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-// import keyMirror from 'keyMirror';
 
 export const LOGIN = 'LOGIN';
 
@@ -48,7 +47,7 @@ export const getItemsUserId = () => dispatch => {
     axiosWithAuth()
         .get(`/users/${id}`)
         .then(res => {
-            console.log(res.data.user.items);
+            console.log("GET_ITEMS_USERID_SUCCESS",res.data.user.items);
             dispatch({ type: GET_ITEMS_USERID_SUCCESS, payload: res.data.user.items });
         })
         .catch(err => {
@@ -67,8 +66,8 @@ export const getItemById = (id) => dispatch => {
     axiosWithAuth()
         .get(`/items/${id}`)
         .then(res => {
-            console.log(res.data);
-            dispatch({ type: GET_ITEM_ID_SUCCESS, payload: res.data });
+            console.log("getItemById-actions", res.data);
+            dispatch({ type: GET_ITEM_ID_SUCCESS, payload: res.data.item });
         })
         .catch(err => {
             console.error(err);
@@ -76,7 +75,19 @@ export const getItemById = (id) => dispatch => {
         })
 }
 
-// export const ModalActionTypes = keyMirror({
-//     HIDE_MODAL: null,
-//     SHOW_MODAL: null,
-// })
+export const POST_NEW_ITEM = "POST_NEW_ITEM";
+export const POST_NEW_ITEM_SUCCESS = "POST_NEW_ITEM_SUCCESS";
+export const POST_NEW_ITEM_FAILURE = "POST_NEW_ITEM_FAILURE";
+
+export const postNewItem = () => dispatch => {
+    dispatch({ type: POST_NEW_ITEM });
+
+    axiosWithAuth()
+    .post('/items')
+    .then(res => {
+        console.log("POSTING NEW ITEM_a", res.data)
+        dispatch({ type: POST_NEW_ITEM_SUCCESS})
+        
+    })
+}
+

@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { login } from "../actions";
 import { withRouter } from "react-router-dom"
 import HomeSplash from '../images/HomeSplash.jpg'
+import styled from 'styled-components';
 
 const LoginContainer = styled.div`
    background-image: url(${HomeSplash});
