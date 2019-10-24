@@ -10,18 +10,20 @@ function EditModal({item,getItemById}) {
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    console.log("Modal - item", item)
 
-    const [product, setProduct] = useState({name: item.name, description: item.description, price: item.price, photo_url: item.photo_url, city: item.city, country: item.country})
+    const [product, setProduct] = useState({name: item.name})
+
+    // console.log('Product', product)
 
     const changeHandler = e => {
-        let value = e.target.value;
         setProduct({
             ...product,
-            [e.target.name]: value
+            [e.target.name]: e.target.value
         })
     }
 
-    console.log("Modal - Item name", product)
   
     const handleSubmit = (e, id) => {
         e.preventDefault()
@@ -30,9 +32,9 @@ function EditModal({item,getItemById}) {
           .put(`/items/${id}`, product)
           .then(res => {
               console.log("EditModal Response",res)
-            handleClose()
-            getItemById()
-            setProduct({name:''});
+              getItemById()
+              setProduct({name:''});
+              handleClose()
           })
           .catch(err => console.log(err.response));
       };
@@ -60,7 +62,7 @@ function EditModal({item,getItemById}) {
                     />
                 </label>    
 
-                <label>
+                {/* <label>
                     Description
                     <textarea
                     name='description'
@@ -77,7 +79,7 @@ function EditModal({item,getItemById}) {
                     <input
                     name='price'
                     value={product.price}
-                    type="text"
+                    type="number"
                     placeholder={`${item.price}`}
                     onChange={changeHandler}
                     />
@@ -115,7 +117,7 @@ function EditModal({item,getItemById}) {
                     placeholder={`${item.country}`}
                     onChange={changeHandler}
                     />
-                </label>
+                </label> */}
 
             </form>
           </Modal.Body>
