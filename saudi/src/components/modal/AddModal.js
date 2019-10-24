@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { withRouter } from "react-router-dom";
+import { axiosWithAuth } from "../../utils/axiosWithAuth";
 import { connect } from 'react-redux';
-import { addItem } from '../../actions/index'
+import { getItems } from '../../actions/index'
 
 
-function AddModal({ addItem }) {
+function AddModal({ getItems }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -21,18 +22,19 @@ function AddModal({ addItem }) {
         })
     }
 
-  const handleSubmit = () => {
-    //e.preventDefault();
-    addItem(product);
-    setProduct({
-        name: '',
-        price: '',
-        city: '',
-        country: '',
-        description: ''
-    })
-    //props.history.push('/items');
-  }
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    console.log("handleSubmit", product)
+    axiosWithAuth()
+      .post(`/items`, product)
+      .then(res => {
+        console.log("EditModal Response", res)
+        handleClose()
+        getItems();
+        setProduct({ name: '' });
+      })
+      .catch(err => console.log(err.response));
+  };
 
     return (
       <>
@@ -81,10 +83,8 @@ function AddModal({ addItem }) {
       </>
     );
   }
-  
-
 
 export default withRouter(connect(
     null,
-    { addItem }
+    { getItems }
 )(AddModal));
