@@ -93,3 +93,28 @@ export const addItem = item => dispatch => {
         })
 }
 
+export const DELETE_ITEM = 'DELETE_ITEM';
+export const DELETE_ITEM_SUCCESS = 'DELETE_ITEM_SUCCESS';
+export const DELETE_ITEM_FAILURE = 'DELETE_ITEM_FAILURE';
+
+export const deleteItem = (id) => dispatch => {
+    console.log(`item id: ${id}`);
+    dispatch({ type: DELETE_ITEM });
+    //const id = match.params.id
+
+    axiosWithAuth()
+        .delete(`/items/${id}`)
+        .then((res) => {
+            dispatch({ type: DELETE_ITEM_SUCCESS, payload: res.data });
+            //history.push('/seller-page');
+        })
+        .catch(err => {
+            console.error('error', err)
+            dispatch({ type: DELETE_ITEM_FAILURE, payload: err });
+        })
+}
+
+// export const ModalActionTypes = keyMirror({
+//     HIDE_MODAL: null,
+//     SHOW_MODAL: null,
+// })

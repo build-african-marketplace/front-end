@@ -1,7 +1,8 @@
 import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE,
     GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE,
     GET_ITEM_ID, GET_ITEM_ID_SUCCESS, GET_ITEM_ID_FAILURE,
-    ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE
+    ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE,
+    DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE
  } from '../actions';
 
 const initialState = {
@@ -20,6 +21,7 @@ export const reducer = (state = initialState, action) => {
                 ...state,
                 credentials: action.payload
             }
+        //get items
         case GET_ITEMS:
             return {
                 ...state,
@@ -40,6 +42,7 @@ export const reducer = (state = initialState, action) => {
                 fetchedItems: false,
                 error: action.payload
             }
+        //get items by user id
         case GET_ITEMS_USERID:
             return {
                 ...state,
@@ -57,6 +60,7 @@ export const reducer = (state = initialState, action) => {
                 fetchingItems: false,
                 error: action.payload
             }
+        //get item by id
         case GET_ITEM_ID:
             return {
                 ...state,
@@ -85,6 +89,21 @@ export const reducer = (state = initialState, action) => {
                 item: action.payload
             }
         case ADD_ITEM_FAILURE:
+            return {
+                ...state,
+                error: action.payload
+            }
+        //delete item by id
+        case DELETE_ITEM:
+            return {
+                ...state
+            }
+        case DELETE_ITEM_SUCCESS:
+            return {
+                ...state,
+                item: action.payload
+            }
+        case DELETE_ITEM_FAILURE:
             return {
                 ...state,
                 error: action.payload
