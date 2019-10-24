@@ -1,37 +1,41 @@
 import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap'
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
+import { connect } from 'react-redux';
+import { getItemsUserId } from '../../actions/index'
 
-const initialItem = {
-    name: "",
-    description: "",
-    photo_url: "",
-    zip_code: "",
-    price: 0,
 
-}
-
-function EditModal({item}) {
+function EditModal({item,getItemsUserId}) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    // const [item, setItem] = useState(initialItem)
+    const [product, setProduct] = useState({name: item.name, description: item.description, price: item.price, photo_url: item.photo_url, city: item.city, country: item.country})
+
+    const changeHandler = e => {
+        let value = e.target.value;
+        setProduct({
+            ...product,
+            [e.target.name]: value
+        })
+    }
 
     console.log(item.name)
   
-    // const handleSubmit = e => {
-    //     e.preventDefault();
-    //     axiosWithAuth()
-    //       .put("/items/:id", item)
-    //       .then(res => {
-    //         props.updateItems(res.data);
-    //         props.history.push("/item-list");
-    //         setItem(initialItem);
-    //       })
-    //       .catch(err => console.log(err));
-    //   };
+    const handleSubmit = (e, id) => {
+        e.preventDefault()
+        console.log("handleSubmit", product)
+        axiosWithAuth()
+          .put(`/items/${id}`, product)
+          .then(res => {
+              console.log(res)
+            handleClose()
+            getItemsUserId()
+            setProduct({name:''});
+          })
+          .catch(err => console.log(err));
+      };
 
     return (
       <>
@@ -44,37 +48,72 @@ function EditModal({item}) {
             <Modal.Title>Edit Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-          {/* saveEdit */}
-            <form onSubmit={undefined}> 
+            <form onSubmit={(e) => {handleSubmit(e, item.id)}}> 
                 <label>
                     Item Name:
                     <input
+                    name='name'
+                    value={product.name}
                     type='text'
                     placeholder={`${item.name}`}
+                    onChange={changeHandler}
                     />
                 </label>    
 
                 <label>
-                    Item Price:
-                    <input
-                    type='text'
-                    placeholder={`${item.price}`}
-                    />
-                </label>
-
-                <label>
                     Description
                     <textarea
+                    name='description'
+                    value={product.description}
                     type='text'
                     placeholder={`${item.description}`}
+                    onChange={changeHandler}
+
                     />
                 </label>
 
                 <label>
-                    Zip Code
+                    Item Price:
                     <input
+                    name='price'
+                    value={product.price}
+                    type="number"
+                    placeholder={`${item.price}`}
+                    onChange={changeHandler}
+                    />
+                </label>
+
+                <label>
+                    Photo:
+                    <input
+                    name='photo_url'
+                    value={product.photo_url}
                     type='text'
-                    placeholder={`${item.zip_code}`}
+                    placeholder={`${item.photo_url}`}
+                    onChange={changeHandler}
+                    />
+                </label>
+
+
+                <label>
+                    City
+                    <input
+                    name='city'
+                    value={product.city}
+                    type='text'
+                    placeholder={`${item.city}`}
+                    onChange={changeHandler}
+                    />
+                </label>
+
+                <label>
+                    Country
+                    <input
+                    name='country'
+                    value={product.country}
+                    type='text'
+                    placeholder={`${item.country}`}
+                    onChange={changeHandler}
                     />
                 </label>
 
@@ -84,7 +123,7 @@ function EditModal({item}) {
             <Button type="submit" variant="secondary" onClick={handleClose}>
               Close
             </Button>
-            <Button variant="primary" onClick={handleClose}>
+            <Button variant="primary" onClick={ (e) => handleSubmit(e, item.id)}>
               Save Changes
             </Button>
           </Modal.Footer>
@@ -93,4 +132,9 @@ function EditModal({item}) {
     );
   }
   
-export default EditModal;
+
+
+export default (connect(
+    null,
+    { getItemsUserId }
+)(EditModal));
