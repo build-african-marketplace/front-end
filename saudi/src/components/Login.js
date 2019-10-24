@@ -8,7 +8,7 @@ import styled from 'styled-components';
 const LoginContainer = styled.div`
     background-image: url(${HomeSplash});
     background-size: 100%;
-    width: auto;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -16,9 +16,13 @@ const LoginContainer = styled.div`
     padding: 30px 0;
 `
 
+const Title = styled.h2`
+    color: #fff;
+`
+
 const LoginButton= styled.button`
-    width: 212px;
-    height: 32px;
+    width: 200px;
+    height: 30px;
     padding: 0;
     background-color: mediumvioletred;
     border-radius: 5px;
@@ -62,7 +66,7 @@ class Login extends React.Component {
         return (
             <div className="login">
                 <LoginContainer>
-                <h2>Log In</h2>
+                <Title>Log In</Title>
                 <form onSubmit={this.handleSubmit}>
                         <LoginInput
                             className="login-input"
