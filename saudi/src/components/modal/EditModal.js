@@ -21,7 +21,7 @@ function EditModal({item,getItemsUserId}) {
         })
     }
 
-    console.log(item.name)
+    console.log("Modal - Item name",item.name)
   
     const handleSubmit = (e, id) => {
         e.preventDefault()
@@ -29,12 +29,12 @@ function EditModal({item,getItemsUserId}) {
         axiosWithAuth()
           .put(`/items/${id}`, product)
           .then(res => {
-              console.log(res)
+              console.log("EditModal Response",res)
             handleClose()
             getItemsUserId()
             setProduct({name:''});
           })
-          .catch(err => console.log(err));
+          .catch(err => console.log(err.response));
       };
 
     return (
@@ -77,7 +77,7 @@ function EditModal({item,getItemsUserId}) {
                     <input
                     name='price'
                     value={product.price}
-                    type="number"
+                    type="text"
                     placeholder={`${item.price}`}
                     onChange={changeHandler}
                     />

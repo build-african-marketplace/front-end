@@ -1,5 +1,4 @@
 import { axiosWithAuth } from '../utils/axiosWithAuth';
-// import keyMirror from 'keyMirror';
 
 export const LOGIN = 'LOGIN';
 
@@ -48,7 +47,7 @@ export const getItemsUserId = () => dispatch => {
     axiosWithAuth()
         .get(`/users/${id}`)
         .then(res => {
-            console.log(res.data.user.items);
+            console.log("GET_ITEMS_USERID_SUCCESS",res.data.user.items);
             dispatch({ type: GET_ITEMS_USERID_SUCCESS, payload: res.data.user.items });
         })
         .catch(err => {
@@ -94,7 +93,3 @@ export const addItem = item => dispatch => {
         })
 }
 
-// export const ModalActionTypes = keyMirror({
-//     HIDE_MODAL: null,
-//     SHOW_MODAL: null,
-// })
