@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap'
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from 'react-redux';
@@ -13,9 +13,21 @@ function EditModal({item,getItemById}) {
     
     console.log("Modal - item", item)
 
-    const [product, setProduct] = useState({name: item.name})
+    const [product, setProduct] = useState({})
 
-    // console.log('Product', product)
+    console.log('Product', product)
+
+    useEffect(() => {
+        setProduct({ 
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            photo_url: item.photo_url,
+            city: item.city,
+            country: item.country
+        
+        })
+      }, [item])
 
     const changeHandler = e => {
         setProduct({
@@ -32,7 +44,7 @@ function EditModal({item,getItemById}) {
           .put(`/items/${id}`, product)
           .then(res => {
               console.log("EditModal Response",res)
-              getItemById()
+              getItemById(id)
               setProduct({name:''});
               handleClose()
           })
@@ -50,7 +62,7 @@ function EditModal({item,getItemById}) {
             <Modal.Title>Edit Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={(e) => {handleSubmit(e, item.id)}}> 
+            <form onSubmit={(e) => handleSubmit(e, item.id)}> 
                 <label>
                     Item Name:
                     <input
@@ -62,7 +74,7 @@ function EditModal({item,getItemById}) {
                     />
                 </label>    
 
-                {/* <label>
+                <label>
                     Description
                     <textarea
                     name='description'
@@ -117,7 +129,7 @@ function EditModal({item,getItemById}) {
                     placeholder={`${item.country}`}
                     onChange={changeHandler}
                     />
-                </label> */}
+                </label>
 
             </form>
           </Modal.Body>
