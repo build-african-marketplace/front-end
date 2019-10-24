@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { getItemById } from "../actions";
+import EditModal from '../components/modal/EditModal'
 
 
 
@@ -22,6 +23,7 @@ class ItemCard extends React.Component {
                 <p>City: {item.city}</p>
                 <p>Country: {item.country}</p>
                 <p>Description: {item.description}</p>
+                <EditModal item={item}/>
             </div>
         )
     }
