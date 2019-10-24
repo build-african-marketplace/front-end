@@ -1,7 +1,7 @@
 import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE,
     GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE,
     GET_ITEM_ID, GET_ITEM_ID_SUCCESS, GET_ITEM_ID_FAILURE,
-    ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE,
+    // ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE,
     DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE
  } from '../actions';
 
@@ -79,20 +79,20 @@ export const reducer = (state = initialState, action) => {
                 error: action.payload
             }
         //add item
-        case ADD_ITEM:
-            return {
-                ...state
-            }
-        case ADD_ITEM_SUCCESS:
-            return {
-                ...state,
-                item: action.payload
-            }
-        case ADD_ITEM_FAILURE:
-            return {
-                ...state,
-                error: action.payload
-            }
+        // case ADD_ITEM:
+        //     return {
+        //         ...state
+        //     }
+        // case ADD_ITEM_SUCCESS:
+        //     return {
+        //         ...state,
+        //         item: action.payload
+        //     }
+        // case ADD_ITEM_FAILURE:
+        //     return {
+        //         ...state,
+        //         error: action.payload
+        //     }
         //delete item by id
         case DELETE_ITEM:
             return {
