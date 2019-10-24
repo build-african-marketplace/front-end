@@ -25,7 +25,7 @@ function EditModal({item,getItemsUserId}) {
   
     const handleSubmit = (e, id) => {
         e.preventDefault()
-        console.log("handleSubmit", id)
+        console.log("handleSubmit", product)
         axiosWithAuth()
           .put(`/items/${id}`, product)
           .then(res => {

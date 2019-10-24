@@ -22,7 +22,7 @@ class SellerItemList extends React.Component {
                         <div key={key} className="item-card">
                             <img className="item-photo" src={item.photo_url} alt="item" />
                             <h3>{item.name}<span>{item.price}</span></h3>
-                            <h4>{item.zip_code}</h4>
+                            <h4>{item.city}</h4>
                             <p>{item.description}</p>
                             <EditModal item={item}/>
                         </div>
