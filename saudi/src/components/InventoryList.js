@@ -1,7 +1,16 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { getItems } from "../actions";
+import styled from 'styled-components'
 
+const InventoryListContainer= styled.div`
+    display: flex;
+    justify-content: space-evenly;
+    padding: 30px 0;
+`
+const ItemPhoto= styled.img`
+    max-width: 250px;
+`
 
 class InventoryList extends React.Component {
     constructor() {
@@ -43,17 +52,17 @@ class InventoryList extends React.Component {
             <div>
                
             </div>
-            <div className="inventory-list">
+            <InventoryListContainer>
                 {filteredItems.map(item => {
                     return(
                         <div className="item-list-card">
-                            <img className="item-photo" src={item.photo_url} alt="item" />
+                            <ItemPhoto src={item.photo_url} alt="item" />
                             <h3>{item.name}<span>{item.price}</span></h3>
                             <p>{item.description}</p>
                         </div>
                     )
                 })}
-            </div>
+            </InventoryListContainer>
             </>
         )
     }

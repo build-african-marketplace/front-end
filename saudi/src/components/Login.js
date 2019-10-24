@@ -6,11 +6,32 @@ import HomeSplash from '../images/HomeSplash.jpg'
 import styled from 'styled-components';
 
 const LoginContainer = styled.div`
-   background-image: url(${HomeSplash});
-   background-size: 100%;
-   width: auto;
-   height: 100%;
-`;
+    background-image: url(${HomeSplash});
+    background-size: 100%;
+    width: auto;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 0;
+`
+
+const LoginButton= styled.button`
+    width: 212px;
+    height: 32px;
+    padding: 0;
+    background-color: mediumvioletred;
+    border-radius: 5px;
+`
+
+const LoginInput= styled.input`
+    width: 200px;
+    height: 30px;
+    padding: 0 0 0 10px;
+    border-radius: 5px;
+    border: solid 1px grey;
+    margin-bottom: 15px;
+`
 
 class Login extends React.Component {
 
@@ -43,7 +64,7 @@ class Login extends React.Component {
                 <LoginContainer>
                 <h2>Log In</h2>
                 <form onSubmit={this.handleSubmit}>
-                        <input
+                        <LoginInput
                             className="login-input"
                             type="text"
                             name="email"
@@ -52,7 +73,7 @@ class Login extends React.Component {
                             onChange={this.handleChange}
                         />
                     <br />
-                        <input
+                        <LoginInput
                             className="login-input"
                             type="password"
                             name="password"
@@ -61,7 +82,7 @@ class Login extends React.Component {
                             onChange={this.handleChange}
                         />
                     <br />
-                    <button className="login-btn">Log in</button>
+                    <LoginButton>Log in</LoginButton>
                 </form>
                 </LoginContainer>
             </div>
