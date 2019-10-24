@@ -68,7 +68,7 @@ export const getItemById = (id) => dispatch => {
         .get(`/items/${id}`)
         .then(res => {
             console.log(res.data);
-            dispatch({ type: GET_ITEM_ID_SUCCESS, payload: res.data });
+            dispatch({ type: GET_ITEM_ID_SUCCESS, payload: res.data.item });
         })
         .catch(err => {
             console.error(err);

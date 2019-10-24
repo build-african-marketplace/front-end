@@ -2,6 +2,7 @@ import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERI
 
 const initialState = {
     items: [],
+    item: {},
     fetchingItems: false,
     loggedIn: false,
     error: null
@@ -57,7 +58,7 @@ export const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingItems: false,
-                items: action.payload
+                item: action.payload
             }
         case GET_ITEM_ID_FAILURE:
             return {
