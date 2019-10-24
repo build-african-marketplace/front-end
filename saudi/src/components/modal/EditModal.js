@@ -2,10 +2,10 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap'
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from 'react-redux';
-import { getItemsUserId } from '../../actions/index'
+import { getItemById } from '../../actions/index'
 
 
-function EditModal({item,getItemsUserId}) {
+function EditModal({item,getItemById}) {
     const [show, setShow] = useState(false);
   
     const handleClose = () => setShow(false);
@@ -21,7 +21,7 @@ function EditModal({item,getItemsUserId}) {
         })
     }
 
-    console.log("Modal - Item name",item.name)
+    console.log("Modal - Item name", product)
   
     const handleSubmit = (e, id) => {
         e.preventDefault()
@@ -31,7 +31,7 @@ function EditModal({item,getItemsUserId}) {
           .then(res => {
               console.log("EditModal Response",res)
             handleClose()
-            getItemsUserId()
+            getItemById()
             setProduct({name:''});
           })
           .catch(err => console.log(err.response));
@@ -136,5 +136,5 @@ function EditModal({item,getItemsUserId}) {
 
 export default (connect(
     null,
-    { getItemsUserId }
+    { getItemById }
 )(EditModal));
