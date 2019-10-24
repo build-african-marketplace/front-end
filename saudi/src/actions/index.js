@@ -57,6 +57,25 @@ export const getItemsUserId = () => dispatch => {
         })
 }
 
+export const GET_ITEM_ID = 'GET_ITEM_ID';
+export const GET_ITEM_ID_SUCCESS = 'GET_ITEM_ID_SUCCESS';
+export const GET_ITEM_ID_FAILURE = 'GET_ITEM_ID_FAILURE';
+
+export const getItemById = (id) => dispatch => {
+    dispatch({ type: GET_ITEM_ID });
+
+    axiosWithAuth()
+        .get(`/items/${id}`)
+        .then(res => {
+            console.log(res.data);
+            dispatch({ type: GET_ITEM_ID_SUCCESS, payload: res.data });
+        })
+        .catch(err => {
+            console.error(err);
+            dispatch({ type: GET_ITEM_ID_FAILURE, payload: err });
+        })
+}
+
 // export const ModalActionTypes = keyMirror({
 //     HIDE_MODAL: null,
 //     SHOW_MODAL: null,
