@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { withFormik, Form, Field, setIn } from 'formik';
 import * as Yup from 'yup';
-import axiosWithAuth from '../utils/axiosWithAuth';
+import {axiosWithAuth} from '../utils/axiosWithAuth';
+import { Label } from 'semantic-ui-react';
 
 const signupFormTemplate = ({ values, errors, touched, status, history, handleUserObject }) => {
     const [inputType, setInputType]= useState('password')

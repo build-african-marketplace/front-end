@@ -33,16 +33,16 @@ function signOut(){
     localStorage.clear()
     window.location.href='/'
 }
-
+//useeffect
 const NavBar= ({user})=>{
     let navLinks;
-    if (user.userId){
+    if (localStorage.getItem('token')){
         navLinks=(
             <NavLinksContainer>
                 <NavLinks to={`/${user.username}`}>
                     My Profile
                 </NavLinks>
-                <NavLinks to='myStore'>
+                <NavLinks to='/myStore'>
                     My Store
                 </NavLinks>
                 <SignOutA onClick={()=> signOut()}>
