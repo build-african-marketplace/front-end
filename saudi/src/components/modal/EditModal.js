@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Modal, Button } from 'react-bootstrap'
 import {axiosWithAuth} from '../../utils/axiosWithAuth'
 import { connect } from 'react-redux';
@@ -10,18 +10,32 @@ function EditModal({item,getItemById}) {
   
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    
+    console.log("Modal - item", item)
 
-    const [product, setProduct] = useState({name: item.name, description: item.description, price: item.price, photo_url: item.photo_url, city: item.city, country: item.country})
+    const [product, setProduct] = useState({})
+
+    console.log('Product', product)
+
+    useEffect(() => {
+        setProduct({ 
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            photo_url: item.photo_url,
+            city: item.city,
+            country: item.country
+        
+        })
+      }, [item])
 
     const changeHandler = e => {
-        let value = e.target.value;
         setProduct({
             ...product,
-            [e.target.name]: value
+            [e.target.name]: e.target.value
         })
     }
 
-    console.log("Modal - Item name", product)
   
     const handleSubmit = (e, id) => {
         e.preventDefault()
@@ -30,9 +44,9 @@ function EditModal({item,getItemById}) {
           .put(`/items/${id}`, product)
           .then(res => {
               console.log("EditModal Response",res)
-            handleClose()
-            getItemById()
-            setProduct({name:''});
+              getItemById(id)
+              setProduct({name:''});
+              handleClose()
           })
           .catch(err => console.log(err.response));
       };
@@ -48,7 +62,7 @@ function EditModal({item,getItemById}) {
             <Modal.Title>Edit Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={(e) => {handleSubmit(e, item.id)}}> 
+            <form onSubmit={(e) => handleSubmit(e, item.id)}> 
                 <label>
                     Item Name:
                     <input
@@ -77,7 +91,7 @@ function EditModal({item,getItemById}) {
                     <input
                     name='price'
                     value={product.price}
-                    type="text"
+                    type="number"
                     placeholder={`${item.price}`}
                     onChange={changeHandler}
                     />

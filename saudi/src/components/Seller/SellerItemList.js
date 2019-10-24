@@ -12,13 +12,14 @@ class SellerItemList extends React.Component {
     }
 
     render() {
+        const item = this.props.item;
         console.log("s_ItemList", this.props.items)
         return (
             <div className="seller-item-list">
+                <AddModal item={item} />
                 {this.props.items.map((item, key) => {
                     return (
                         <>
-                        <AddModal />
                             <div className="item-list-card" key={key}>
                         <Link to={`/item/${item.id}`}>
                                 <img className="item-photo" src={item.photo_url} alt="item" />
@@ -26,7 +27,6 @@ class SellerItemList extends React.Component {
                         </Link>
                                 <span>{item.price}</span>
                                 <p>{item.description}</p>
-                                <button>Delete</button>
                             </div>
                         </>
                     )
