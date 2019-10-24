@@ -2,9 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { login } from "../actions";
 import { withRouter } from "react-router-dom"
-
+import styled from 'styled-components';
 import HomeSplash from '../images/HomeSplash.jpg'
-import styled from 'styled-components'
 
 const LoginContainer = styled.div`
    background-image: url(${HomeSplash});
@@ -42,28 +41,28 @@ class Login extends React.Component {
         return (
             <div className="login">
                 <LoginContainer>
-                <h2>Log In</h2>
-                <form onSubmit={this.handleSubmit}>
-                        <input
-                            className="login-input"
-                            type="text"
-                            name="email"
-                            placeholder="Email"
-                            value={this.state.credentials.email}
-                            onChange={this.handleChange}
-                        />
-                    <br />
-                        <input
-                            className="login-input"
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            value={this.state.credentials.password}
-                            onChange={this.handleChange}
-                        />
-                    <br />
-                    <button className="login-btn">Log in</button>
-                </form>
+                  <h2>Log In</h2>
+                  <form onSubmit={this.handleSubmit}>
+                          <input
+                              className="login-input"
+                              type="text"
+                              name="email"
+                              placeholder="Email"
+                              value={this.state.credentials.email}
+                              onChange={this.handleChange}
+                          />
+                      <br />
+                          <input
+                              className="login-input"
+                              type="password"
+                              name="password"
+                              placeholder="Password"
+                              value={this.state.credentials.password}
+                              onChange={this.handleChange}
+                          />
+                      <br />
+                      <button className="login-btn">Log in</button>
+                  </form>
                 </LoginContainer>
             </div>
         );

@@ -3,6 +3,7 @@ import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE, GET_ITEMS_USERI
 const initialState = {
     items: [],
     fetchingItems: false,
+    loggedIn: false,
     error: null
 }
 

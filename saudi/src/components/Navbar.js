@@ -34,14 +34,12 @@ function signOut(){
     window.location.href='/'
 }
 
-const NavBar= ({user})=>{
+const NavBar= () =>{
+    console.log('user',user)
     let navLinks;
-    if (user.userId){
+    if (localStorage.getItem('token')){
         navLinks=(
-            <NavLinksContainer>
-                <NavLinks to={`/${user.username}`}>
-                    My Profile
-                </NavLinks>
+              <NavLinksContainer>
                 <NavLinks to='myStore'>
                     My Store
                 </NavLinks>
