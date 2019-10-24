@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { getItemById } from "../actions";
+import { getItemById, deleteItem } from "../actions";
 import EditModal from '../components/modal/EditModal'
 
 
@@ -24,6 +24,7 @@ class ItemCard extends React.Component {
                 <p>Country: {item.country}</p>
                 <p>Description: {item.description}</p>
                 <EditModal item={item}/>
+                <button onClick={() => deleteItem(this.props.match.params.id)} className="delete-btn">Delete</button>
             </div>
         )
     }
@@ -35,5 +36,5 @@ const mapStateToProps = (state) => ({
 
 export default connect(
     mapStateToProps,
-    { getItemById }
+    { getItemById, deleteItem }
 )(ItemCard);
