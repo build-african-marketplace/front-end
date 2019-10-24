@@ -5,19 +5,6 @@ import { withRouter } from "react-router-dom"
 import styled from 'styled-components';
 import HomeSplash from '../images/HomeSplash.jpg'
 
-
-const HomeContainer = styled.div`
-    background-image: url(${HomeSplash});
-    background-size: 100%;
-  width: auto;
-  height: 100%;
-  
-`;
-
-
-import HomeSplash from '../images/HomeSplash.jpg'
-import styled from 'styled-components'
-
 const LoginContainer = styled.div`
    background-image: url(${HomeSplash});
    background-size: 100%;
