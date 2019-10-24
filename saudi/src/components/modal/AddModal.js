@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
-import { Modal, Button } from 'react-bootstrap'
-import {axiosWithAuth} from '../../utils/axiosWithAuth'
+import { Modal, Button } from 'react-bootstrap';
+import { withRouter } from "react-router-dom";
 import { connect } from 'react-redux';
 import { addItem } from '../../actions/index'
 
 
-function AddModal({item, addItem}) {
-    const [show, setShow] = useState(false);
-  
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+function AddModal({ addItem }) {
+  const [show, setShow] = useState(false);
 
-    const [product, setProduct] = useState({name: '', price: '',  city: '', country: '', description: ''})
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
+  const [product, setProduct] = useState({ name: '', price: '', city: '', country: '', description: '', user_id: localStorage.getItem('user_id')})
 
     const changeHandler = e => {
         let value = e.target.value;
@@ -21,21 +21,18 @@ function AddModal({item, addItem}) {
         })
     }
 
-    console.log("Modal - Item name",product)
-  
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        console.log("handleSubmit", product)
-        axiosWithAuth()
-            .post('/items', product)
-            .then(res => {
-                console.log('POST response',res.data)
-                handleClose()
-                addItem()
-            })
-        
-          .catch(err => console.log(err.response));
-      };
+  const handleSubmit = () => {
+    //e.preventDefault();
+    addItem(product);
+    setProduct({
+        name: '',
+        price: '',
+        city: '',
+        country: '',
+        description: ''
+    })
+    //props.history.push('/items');
+  }
 
     return (
       <>
@@ -48,7 +45,7 @@ function AddModal({item, addItem}) {
             <Modal.Title>Add Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={(e) => {handleSubmit(e)}}> 
+            <form onSubmit={handleSubmit}> 
                 <label>
                     Name:
                     <input type='text' name='name' value={product.name} onChange={changeHandler} />
@@ -87,7 +84,7 @@ function AddModal({item, addItem}) {
   
 
 
-export default (connect(
+export default withRouter(connect(
     null,
     { addItem }
 )(AddModal));
