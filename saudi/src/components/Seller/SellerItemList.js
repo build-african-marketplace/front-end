@@ -27,7 +27,6 @@ class SellerItemList extends React.Component {
                         </Link>
                                 <span>{item.price}</span>
                                 <p>{item.description}</p>
-                                <button>Delete</button>
                             </div>
                         </>
                     )
