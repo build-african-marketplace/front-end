@@ -17,6 +17,23 @@ export const login = (credentials) => dispatch => {
         .catch(err => console.log(err));
 };
 
+export const REGISTER = 'REGISTER';
+
+export const register = (credentials) => dispatch => {
+    dispatch({ type: REGISTER });
+
+    return axiosWithAuth()
+        .post(`/auth/register`, credentials)
+        .then(res => {
+            console.log(res);
+            localStorage.setItem("token", res.data.token);
+            localStorage.setItem("user_id", res.data.user.id);
+            // redirect to seller home page
+            this.props.history.push("/seller-page");
+        })
+        .catch(err => console.log(err));
+};
+
 export const GET_ITEMS = 'GET_ITEMS';
 export const GET_ITEMS_SUCCESS = 'GET_ITEMS_SUCCESS';
 export const GET_ITEMS_FAILURE = 'GET_ITEMS_FAILURE';

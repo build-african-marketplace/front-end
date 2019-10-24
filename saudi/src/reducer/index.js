@@ -2,7 +2,7 @@ import { LOGIN, GET_ITEMS, GET_ITEMS_SUCCESS, GET_ITEMS_FAILURE,
     GET_ITEMS_USERID, GET_ITEMS_USERID_SUCCESS, GET_ITEMS_USERID_FAILURE,
     GET_ITEM_ID, GET_ITEM_ID_SUCCESS, GET_ITEM_ID_FAILURE,
     ADD_ITEM, ADD_ITEM_SUCCESS, ADD_ITEM_FAILURE,
-    DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE
+    DELETE_ITEM, DELETE_ITEM_SUCCESS, DELETE_ITEM_FAILURE, REGISTER
  } from '../actions';
 
 const initialState = {
@@ -18,6 +18,11 @@ export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGIN: 
             return {
+                ...state,
+                credentials: action.payload
+            }
+        case REGISTER:
+            return{
                 ...state,
                 credentials: action.payload
             }
