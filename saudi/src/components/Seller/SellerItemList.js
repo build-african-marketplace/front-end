@@ -11,10 +11,12 @@ class SellerItemList extends React.Component {
         this.props.getItemsUserId();
     }
 
+    
+
     render() {
         return (
             <div className="seller-item-list">
-                {this.props.items.map(item => {
+                {this.props.items.map((item, key) => {
                     return (
                         <Link to={`/item/${item.id}`}>
                             <div className="item-list-card">
