@@ -48,7 +48,7 @@ function EditModal({item,getItemById}) {
             <Modal.Title>Edit Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <form onSubmit={(e) => {handleSubmit(e, item.id)}}> 
+            <form onSubmit={(e) => handleSubmit(e, item.id)}> 
                 <label>
                     Item Name:
                     <input
