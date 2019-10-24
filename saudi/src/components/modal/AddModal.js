@@ -11,7 +11,7 @@ function AddModal({item, addItem}) {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const [product, setProduct] = useState({name: '', price: '',  city: '', country: '', user_id:''})
+    const [product, setProduct] = useState({name: '', price: '',  city: '', country: '', description: ''})
 
     const changeHandler = e => {
         let value = e.target.value;
@@ -45,25 +45,30 @@ function AddModal({item, addItem}) {
   
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
-            <Modal.Title>Edit Item</Modal.Title>
+            <Modal.Title>Add Item</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             <form onSubmit={(e) => {handleSubmit(e)}}> 
                 <label>
                     Name:
-                    <input type='text' name='name' value={product.name} onChange={changeHandler} /></label>
+                    <input type='text' name='name' value={product.name} onChange={changeHandler} />
+                </label>
                 <label>    
                     City:
-                    <input type='text' name='city' value={product.city} onChange={changeHandler} /> </label>
+                    <input type='text' name='city' value={product.city} onChange={changeHandler} />
+                </label>
                 <label>
                     Country:
-                    <input type='text' name='country' value={product.country} onChange={changeHandler} /> </label>
+                    <input type='text' name='country' value={product.country} onChange={changeHandler} />
+                </label>
                 <label> 
                     Price:   
-                <input type='text' name='price' value={product.price} onChange={changeHandler} /> </label>
-                <label>
-                    User Id:
-                <input type='text' name='user_id' value={product.user_id} onChange={changeHandler} /> </label>
+                    <input type='text' name='price' value={product.price} onChange={changeHandler} />
+                </label>
+              <label>
+                Description:
+                    <input type='text' name='description' value={product.description} onChange={changeHandler} />
+              </label>
 
             </form>
           </Modal.Body>
