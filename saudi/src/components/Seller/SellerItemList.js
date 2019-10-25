@@ -19,7 +19,8 @@ margin: 5px;
 justify-content:left;
 border: 1px solid lightgrey;
 border-radius:5px;
-width:30%
+mad-width: 250px;
+border: 2px solid #83E380;
 `
 
 class SellerItemList extends React.Component {
