@@ -5,22 +5,22 @@ import { getItemsUserId } from "../../actions";
 import AddModal from '../modal/AddModal';
 import styled from 'styled-components';
 
-const ModalContainer = styled.div`
-    margin: 20px;
-`;
 
-const CardContainer = styled.div`
-    border: 2px solid #83E38D;
-    max-width: 250px;
-    padding: 10px;
-    margin: 20px;
-    background: white;
-`;
-
-const ItemPhoto= styled.img`
-    max-width: 250px;
+const ItemListContainer= styled.div`
+display:flex;
+flex-direction:column;
+padding:5px;
 `
 
+const ItemCard= styled.div`
+display:flex;
+flex-direction:column;
+margin: 5px;
+justify-content:left;
+border: 1px solid lightgrey;
+border-radius:5px;
+width:30%
+`
 
 class SellerItemList extends React.Component {
 
@@ -32,23 +32,26 @@ class SellerItemList extends React.Component {
         const item = this.props.item;
         console.log("s_ItemList", this.props.items)
         return (
-            <div className="seller-item-list">
-                <ModalContainer >
-                     <AddModal item={item} />
-                </ModalContainer>
+
+            <ItemListContainer>
+                <div>
+                    <AddModal item={item} />
+                </div>
                 {this.props.items.map((item, key) => {
-                    return (             
-                            <CardContainer key={key}>
+                    return (
+                        <>
+                            <ItemCard key={key}>
                                 <Link to={`/item/${item.id}`}>
-                                    <ItemPhoto className="item-photo" src={item.photo_url} alt="item" />
-                                    <h3>{item.name}</h3>
+                                        <img className="item-photo" src={item.photo_url} alt="item" />
+                                        <h3>{item.name}</h3>
                                 </Link>
-                                <span>${item.price}</span>
-                                <p>{item.description}</p>
-                            </CardContainer>                    
+                                    <span>{item.price}</span>
+                                    <p>{item.description}</p>
+                            </ItemCard>
+                        </>
                     )
                 })}
-            </div>
+            </ItemListContainer>
         )
     }
 }

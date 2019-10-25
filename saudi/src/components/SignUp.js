@@ -15,6 +15,7 @@ const SignupContainer = styled.div`
     flex-direction: column;
     align-items: center;
     padding: 30px 0;
+    color:white;
 `
 
 const SignupButton= styled.button`

@@ -8,9 +8,12 @@ import SellerPageHeader from '../../images/BioPage.jpg'
 const Header = styled.div`
     background-image: url(${SellerPageHeader});
     background-size: 100%;
-    height: 254px;
-   
-
+    width: auto;
+    height: 100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:5px;
 `;
 
 const Title = styled.h1`
