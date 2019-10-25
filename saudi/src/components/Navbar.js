@@ -35,7 +35,7 @@ const NavBar= ({user})=>{
     }else{
         navLinks=(
             <>
-                <NavLink to='/logIn'>
+                <NavLink to='/login'>
                     Log In
                 </NavLink>
                 <NavLink to='/sign-up'>
@@ -49,7 +49,7 @@ const NavBar= ({user})=>{
                 <>
                     <NavLink to='/'>Home</NavLink>
                     <NavLink to='/about'>About Us</NavLink>
-                    <NavLink to='/shop'>Shop</NavLink>
+                    <NavLink to='/inventory-list'>Shop</NavLink>
                     {navLinks}
                 </>
             </div>
