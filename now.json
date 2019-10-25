@@ -1,0 +1,9 @@
+
+{
+    "version": 2,
+    "name": "saudi",
+    "builds": [{ "src": "saudi/package.json", "use": "@now/static-build", "config": {"distDir": "build"} }],
+    "routes": [
+        { "src": "/(.*)", "dest": "saudi/$1" }
+    ]
+ }

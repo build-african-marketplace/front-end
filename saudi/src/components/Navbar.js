@@ -2,30 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from 'styled-components';
 
-const NavContainer= styled.div`
-display:flex;
-padding:20px;
-`
-
-const NavLinksContainer= styled.div`
-display:flex;
-`
-
-const NavLinks= styled(Link)`
+const NavLink= styled(Link)`
 font-family: 'Open Sans', sans-serif;
-font-size:35px;
+color: grey;
+font-size:20px;
 margin:20px;
 &:hover{
-    text-decoration:underline
-}
-`
-
-const SignOutA= styled.a`
-font-family: 'Open Sans', sans-serif;
-font-size:35px;
-margin:20px;
-&:hover{
-    text-decoration:underline
+    text-decoration:none;
+    color: mediumvioletred;
 }
 `
 
@@ -38,38 +22,36 @@ const NavBar= ({user})=>{
     let navLinks;
     if (localStorage.getItem('token')){
         navLinks=(
-            <NavLinksContainer>
-                <NavLinks to='/myStore'>
+            <>
+                <NavLink to='/seller-page'>
                     My Store
-                </NavLinks>
-                <SignOutA onClick={()=> signOut()}>
+                </NavLink>
+                <NavLink onClick={()=> signOut()}>
                     Sign Out
-                </SignOutA>
-                <NavLinks to='/seller-page'>
-                    Seller Page
-                </NavLinks>
-            </NavLinksContainer>
+                </NavLink>
+                
+            </>
         )
     }else{
         navLinks=(
-            <NavLinksContainer>
-                <NavLinks to='/'>
+            <>
+                <NavLink to='/logIn'>
                     Log In
-                </NavLinks>
-                <NavLinks to='/sign-up'>
+                </NavLink>
+                <NavLink to='/sign-up'>
                     Sign Up
-                </NavLinks>
-            </NavLinksContainer>
+                </NavLink>
+            </>
         )
     }
         return(
-            <div className='navContainer'>
-                <nav>
-                    <Link to='/'>Home</Link>
-                    <Link to='/about'>About Us</Link>
-                    <Link to='/inventory-list'>Shop</Link>
+            <div className='nav-container'>
+                <>
+                    <NavLink to='/'>Home</NavLink>
+                    <NavLink to='/about'>About Us</NavLink>
+                    <NavLink to='/shop'>Shop</NavLink>
                     {navLinks}
-                </nav>
+                </>
             </div>
         )
 }

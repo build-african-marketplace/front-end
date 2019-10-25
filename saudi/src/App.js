@@ -9,12 +9,13 @@ import ItemCard from './components/ItemCard';
 import NavBar from './components/Navbar'
 import SignUp from './components/SignUp'
 import InventoryList from './components/InventoryList';
+import Footer from './components/Footer';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar/>
+        <NavBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <PrivateRoute path="/seller-page" component={SellerPage} />
@@ -23,7 +24,9 @@ function App() {
           <Route path='/inventory-list' component={InventoryList}/>
           {/* <Route path='/sign-up' render={props => <signupForm {...props} handleUserObject={handleUserObject} />} /> */}
         </Switch>
+      
       </div>
+      <Footer />
     </Router>
   );
 }
