@@ -6,6 +6,7 @@ import SellerPage from './components/Seller/SellerPage';
 import PrivateRoute from "./components/PrivateRoute";
 import HomePage from './components/HomePage';
 import ItemCard from './components/ItemCard';
+
 import NavBar from './components/Navbar';
 import Footer from './components/Footer';
 import SignUp from './components/SignUp';
@@ -24,6 +25,7 @@ function App() {
         </Switch>
         <Footer />
       </div>
+      <Footer />
     </Router>
   );
 }
