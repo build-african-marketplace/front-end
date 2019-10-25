@@ -6,15 +6,16 @@ import SellerPage from './components/Seller/SellerPage';
 import PrivateRoute from "./components/PrivateRoute";
 import HomePage from './components/HomePage';
 import ItemCard from './components/ItemCard';
-import NavBar from './components/Navbar'
-import SignUp from './components/SignUp'
-import Footer from './components/Footer'
+
+import NavBar from './components/Navbar';
+import Footer from './components/Footer';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <NavBar/>
+        <NavBar />
         <Switch>
           <Route exact path="/" component={HomePage} />
           <PrivateRoute path="/seller-page" component={SellerPage} />
@@ -22,6 +23,7 @@ function App() {
           <Route path='/sign-up' component={SignUp}/>
           {/* <Route path='/sign-up' render={props => <signupForm {...props} handleUserObject={handleUserObject} />} /> */}
         </Switch>
+        <Footer />
       </div>
       <Footer />
     </Router>
