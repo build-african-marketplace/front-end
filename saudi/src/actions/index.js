@@ -23,11 +23,11 @@ export const register = (credentials) => dispatch => {
     dispatch({ type: REGISTER });
 
     return axiosWithAuth()
-        .post(`/auth/register`, credentials)
+        .post(`https://african-marketplace-bw.herokuapp.com/api/auth/register`, credentials)
         .then(res => {
             console.log(res);
             localStorage.setItem("token", res.data.token);
-            localStorage.setItem("user_id", res.data.user.id);
+            localStorage.setItem("user_id", res.data.new_user.id);
             // redirect to seller home page
             this.props.history.push("/seller-page");
         })

@@ -60,6 +60,7 @@ class Login extends React.Component {
         this.props.login(this.state.credentials).then(() => {
             this.props.history.push("/seller-page")
         })
+        console.log(this.state.credentials, 'THESE ARE THE LOGIN SUBMISSION')
     }
 
     render() {
