@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import ItemCard from './components/ItemCard';
 import NavBar from './components/Navbar'
 import SignUp from './components/SignUp'
+import Footer from './components/Footer'
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           {/* <Route path='/sign-up' render={props => <signupForm {...props} handleUserObject={handleUserObject} />} /> */}
         </Switch>
       </div>
+      <Footer />
     </Router>
   );
 }
