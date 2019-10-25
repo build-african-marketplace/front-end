@@ -26,7 +26,7 @@ function App() {
           <Route path='/login' component={Login}/>
           {/* <Route path='/sign-up' render={props => <signupForm {...props} handleUserObject={handleUserObject} />} /> */}
         </Switch>
-      
+        <Footer />
       </div>
     </Router>
   );
