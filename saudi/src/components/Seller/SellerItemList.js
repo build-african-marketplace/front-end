@@ -3,7 +3,23 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom"
 import { getItemsUserId } from "../../actions";
 import AddModal from '../modal/AddModal';
+import styled from 'styled-components';
 
+const ItemListContainer= styled.div`
+display:flex;
+flex-direction:column;
+padding:5px;
+`
+
+const ItemCard= styled.div`
+display:flex;
+flex-direction:column;
+margin: 5px;
+justify-content:left;
+border: 1px solid lightgrey;
+border-radius:5px;
+width:30%
+`
 
 class SellerItemList extends React.Component {
 
@@ -15,23 +31,25 @@ class SellerItemList extends React.Component {
         const item = this.props.item;
         console.log("s_ItemList", this.props.items)
         return (
-            <div className="seller-item-list">
-                <AddModal item={item} />
+            <ItemListContainer>
+                <div>
+                    <AddModal item={item} />
+                </div>
                 {this.props.items.map((item, key) => {
                     return (
                         <>
-                            <div className="item-list-card" key={key}>
-                        <Link to={`/item/${item.id}`}>
-                                <img className="item-photo" src={item.photo_url} alt="item" />
-                                <h3>{item.name}</h3>
-                        </Link>
-                                <span>{item.price}</span>
-                                <p>{item.description}</p>
-                            </div>
+                            <ItemCard key={key}>
+                                <Link to={`/item/${item.id}`}>
+                                        <img className="item-photo" src={item.photo_url} alt="item" />
+                                        <h3>{item.name}</h3>
+                                </Link>
+                                    <span>{item.price}</span>
+                                    <p>{item.description}</p>
+                            </ItemCard>
                         </>
                     )
                 })}
-            </div>
+            </ItemListContainer>
         )
     }
 }

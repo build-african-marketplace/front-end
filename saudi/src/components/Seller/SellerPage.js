@@ -10,7 +10,10 @@ const Header = styled.div`
     background-size: 100%;
     width: auto;
     height: 100%;
-
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:5px;
 `;
 
 const Title = styled.h1`
