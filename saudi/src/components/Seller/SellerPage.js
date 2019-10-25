@@ -3,21 +3,29 @@ import SellerItemList from "./SellerItemList";
 import { connect } from 'react-redux';
 import { getItemsUserId } from '../../actions';
 import styled from 'styled-components';
-import SellerPageHeader from '../../images/SellerPage.jpg'
+import SellerPageHeader from '../../images/BioPage.jpg'
 
 const Header = styled.div`
     background-image: url(${SellerPageHeader});
     background-size: 100%;
-    width: auto;
-    height: 100%;
+    height: 254px;
+   
 
 `;
 
 const Title = styled.h1`
-    height: 254px;
     color: white;
     font-family: 'Source Sans Pro', sans-serif;
     text-align: center;
+    padding-top: 15%;
+`;
+
+const Container = styled.div`
+    display: flex;
+    width: 80%;
+    margin: 10px auto;
+    background: #FFFFF1;
+
 `;
 
 //componentDidMount set user_id in local storage for the user_id endpoint
@@ -31,9 +39,11 @@ class SellerPage extends React.Component {
         return (
             <div className="seller-page">
                 <Header>
-                    <Title>Seller Page</Title>
+                    <Title>My Store</Title>
                 </Header>
-                <SellerItemList />
+                <Container>
+                    <SellerItemList />
+                </Container>
             </div>
         )
     }

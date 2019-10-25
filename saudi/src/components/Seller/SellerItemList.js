@@ -3,6 +3,23 @@ import { connect } from "react-redux";
 import { withRouter, Link } from "react-router-dom"
 import { getItemsUserId } from "../../actions";
 import AddModal from '../modal/AddModal';
+import styled from 'styled-components';
+
+const ModalContainer = styled.div`
+    margin: 20px;
+`;
+
+const CardContainer = styled.div`
+    border: 2px solid #83E38D;
+    max-width: 250px;
+    padding: 10px;
+    margin: 20px;
+    background: white;
+`;
+
+const ItemPhoto= styled.img`
+    max-width: 250px;
+`
 
 
 class SellerItemList extends React.Component {
@@ -16,19 +33,19 @@ class SellerItemList extends React.Component {
         console.log("s_ItemList", this.props.items)
         return (
             <div className="seller-item-list">
-                <AddModal item={item} />
+                <ModalContainer >
+                     <AddModal item={item} />
+                </ModalContainer>
                 {this.props.items.map((item, key) => {
-                    return (
-                        <>
-                            <div className="item-list-card" key={key}>
-                        <Link to={`/item/${item.id}`}>
-                                <img className="item-photo" src={item.photo_url} alt="item" />
-                                <h3>{item.name}</h3>
-                        </Link>
-                                <span>{item.price}</span>
+                    return (             
+                            <CardContainer key={key}>
+                                <Link to={`/item/${item.id}`}>
+                                    <ItemPhoto className="item-photo" src={item.photo_url} alt="item" />
+                                    <h3>{item.name}</h3>
+                                </Link>
+                                <span>${item.price}</span>
                                 <p>{item.description}</p>
-                            </div>
-                        </>
+                            </CardContainer>                    
                     )
                 })}
             </div>
