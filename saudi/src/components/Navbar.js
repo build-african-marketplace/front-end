@@ -23,12 +23,13 @@ const NavBar= ({user})=>{
     if (localStorage.getItem('token')){
         navLinks=(
             <>
-                <NavLink to='/myStore'>
+                <NavLink to='/seller-page'>
                     My Store
                 </NavLink>
                 <NavLink onClick={()=> signOut()}>
                     Sign Out
                 </NavLink>
+                
             </>
         )
     }else{
