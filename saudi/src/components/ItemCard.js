@@ -8,11 +8,32 @@ import styled from 'styled-components'
 const ItemListCard= styled.div`
 display:flex;
 flex-direction:column;
-margin: 20px;
+margin: 5px;
+align-items:center;
+justify-content:center;
+
+border: 1px solid lightgrey;
+border-radius:5px;
+`
+const ItemImage= styled.img`
+width: 100%;
+length: 60%;
 `
 
+const DescripContainer= styled.div`
+display:flex;
+flex-direction:column;
+padding:10px;
+border-radius:5px;
+`
 
+const Info= styled.p`
+margin:10px;
+`
 
+const ButtonContainer= styled.div`
+margin:5px;
+`
 
 class ItemCard extends React.Component {
     
@@ -37,14 +58,20 @@ class ItemCard extends React.Component {
         const item = this.props.item;
         return (
             <ItemListCard>
-                <img className="item-photo" src={item.photo_url} alt="item" />
+                <ItemImage src={item.photo_url} alt="item" />
                 <h1>{item.name}</h1>
-                <p>Price: {item.price}</p>
-                <p>City: {item.city}</p>
-                <p>Country: {item.country}</p>
-                <p>Description: {item.description}</p>
-                <EditModal item={item}/>
-                <button onClick={() => this.deleteItem(this.props.match.params.id)} className="delete-btn">Delete</button>
+                <DescripContainer>
+                    <Info>Price: {item.price}</Info>
+                    <Info>City: {item.city}</Info>
+                    <Info>Country: {item.country}</Info>
+                    <Info>Description: {item.description}</Info>
+                </DescripContainer>
+                <ButtonContainer>
+                    <EditModal item={item}/>
+                </ButtonContainer>
+                <ButtonContainer>
+                    <button onClick={() => this.deleteItem(this.props.match.params.id)} className="delete-btn">Delete</button>
+                </ButtonContainer>
             </ItemListCard>
         )
     }

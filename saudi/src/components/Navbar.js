@@ -45,6 +45,9 @@ const NavBar= ({user})=>{
                 <SignOutA onClick={()=> signOut()}>
                     Sign Out
                 </SignOutA>
+                <NavLinks to='/seller-page'>
+                    Seller Page
+                </NavLinks>
             </NavLinksContainer>
         )
     }else{
