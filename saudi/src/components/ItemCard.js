@@ -11,7 +11,7 @@ flex-direction:column;
 margin: 5px;
 align-items:center;
 justify-content:center;
-
+width:50%;
 border: 1px solid lightgrey;
 border-radius:5px;
 `
