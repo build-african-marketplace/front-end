@@ -5,6 +5,7 @@ import { getItemsUserId } from "../../actions";
 import AddModal from '../modal/AddModal';
 import styled from 'styled-components';
 
+
 const ItemListContainer= styled.div`
 display:flex;
 flex-direction:column;
@@ -31,6 +32,7 @@ class SellerItemList extends React.Component {
         const item = this.props.item;
         console.log("s_ItemList", this.props.items)
         return (
+
             <ItemListContainer>
                 <div>
                     <AddModal item={item} />

@@ -7,10 +7,25 @@ const InventoryListContainer= styled.div`
     display: flex;
     justify-content: space-evenly;
     padding: 30px 0;
+    
 `
 const ItemPhoto= styled.img`
     max-width: 250px;
 `
+const SearchContainer = styled.div`
+    background: #1D2C3C;
+    height: 50px;
+`;
+
+const Search = styled.input`
+    margin: 10px 40px;
+`;
+
+const CardContainer = styled.div`
+    border: 2px solid #83E38D;
+    padding: 10px;
+    max-width: 275px;
+`;
 
 class InventoryList extends React.Component {
     constructor() {
@@ -41,25 +56,26 @@ class InventoryList extends React.Component {
         );
         return(
             <>
-            <div className='search-bar'>
-                 <label>Search</label>
-                <input 
+            <SearchContainer>
+                 
+                <Search 
                     type="text" 
                     value={this.state.search} 
-                    onChange={(e) => this.updateSearch(e)}   
+                    onChange={(e) => this.updateSearch(e)} 
+                    placeholder="Search"  
                 />
-            </div>
+            </SearchContainer>
             <div>
                
             </div>
             <InventoryListContainer>
                 {filteredItems.map(item => {
                     return(
-                        <div className="item-list-card">
+                        <CardContainer>
                             <ItemPhoto src={item.photo_url} alt="item" />
-                            <h3>{item.name}<span>{item.price}</span></h3>
+                            <h3>{item.name}<span>${item.price}</span></h3>
                             <p>{item.description}</p>
-                        </div>
+                        </CardContainer>
                     )
                 })}
             </InventoryListContainer>

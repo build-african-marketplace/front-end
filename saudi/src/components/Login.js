@@ -26,6 +26,7 @@ const LoginButton= styled.button`
     padding: 0;
     background-color: mediumvioletred;
     border-radius: 5px;
+    color: white;
 `
 
 const LoginInput= styled.input`
