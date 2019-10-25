@@ -5,6 +5,7 @@ import { withRouter } from "react-router-dom"
 import HomeSplash from '../images/HomeSplash.jpg'
 import styled from 'styled-components';
 
+
 const SignupContainer = styled.div`
     background-image: url(${HomeSplash});
     background-size: 100%;
@@ -56,13 +57,14 @@ class Signup extends React.Component {
       this.props.register(this.state.credentials).then(() => {
           this.props.history.push("/seller-page")
       })
+      console.log(this.state.credentials, 'THESE ARE THE CREDENTIALS')
   }
 
   render() {
       return (
           <div className="login">
               <SignupContainer>
-              <h2>Log In</h2>
+              <h2>Sign Up</h2>
               <form onSubmit={this.handleSubmit}>
                       <SignupInput
                           className="login-input"

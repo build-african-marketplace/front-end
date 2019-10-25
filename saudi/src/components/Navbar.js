@@ -50,7 +50,7 @@ const NavBar= ({user})=>{
     }else{
         navLinks=(
             <NavLinksContainer>
-                <NavLinks to='/logIn'>
+                <NavLinks to='/'>
                     Log In
                 </NavLinks>
                 <NavLinks to='/sign-up'>
@@ -64,7 +64,7 @@ const NavBar= ({user})=>{
                 <nav>
                     <Link to='/'>Home</Link>
                     <Link to='/about'>About Us</Link>
-                    <Link to='/shop'>Shop</Link>
+                    <Link to='/inventory-list'>Shop</Link>
                     {navLinks}
                 </nav>
             </div>

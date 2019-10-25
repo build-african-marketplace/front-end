@@ -3,6 +3,14 @@ import { connect } from "react-redux";
 import { getItemById } from "../actions";
 import { axiosWithAuth } from "../utils/axiosWithAuth";
 import EditModal from '../components/modal/EditModal';
+import styled from 'styled-components'
+
+const ItemListCard= styled.div`
+display:flex;
+flex-direction:column;
+margin: 20px;
+`
+
 
 
 
@@ -28,16 +36,16 @@ class ItemCard extends React.Component {
         console.log('props', this.props.item);
         const item = this.props.item;
         return (
-            <div className="item-list-card">
-                <h1>{item.name}</h1>
+            <ItemListCard>
                 <img className="item-photo" src={item.photo_url} alt="item" />
+                <h1>{item.name}</h1>
                 <p>Price: {item.price}</p>
                 <p>City: {item.city}</p>
                 <p>Country: {item.country}</p>
                 <p>Description: {item.description}</p>
                 <EditModal item={item}/>
                 <button onClick={() => this.deleteItem(this.props.match.params.id)} className="delete-btn">Delete</button>
-            </div>
+            </ItemListCard>
         )
     }
 }

@@ -8,6 +8,7 @@ import HomePage from './components/HomePage';
 import ItemCard from './components/ItemCard';
 import NavBar from './components/Navbar'
 import SignUp from './components/SignUp'
+import InventoryList from './components/InventoryList';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <PrivateRoute path="/seller-page" component={SellerPage} />
           <Route path="/item/:id" component={ItemCard} />
           <Route path='/sign-up' component={SignUp}/>
+          <Route path='/inventory-list' component={InventoryList}/>
           {/* <Route path='/sign-up' render={props => <signupForm {...props} handleUserObject={handleUserObject} />} /> */}
         </Switch>
       </div>
